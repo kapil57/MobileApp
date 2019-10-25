@@ -2,6 +2,7 @@ package com.example.mytipscalculator;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
         final TextView totalBill = findViewById(R.id.totalbill);
 
         Button calculate = findViewById(R.id.button);
+        Button openSecond = findViewById(R.id.button3);
 
         calculate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -36,6 +38,14 @@ public class MainActivity extends AppCompatActivity {
                 TipCalculator myCalculator = new TipCalculator(tip,bill);
                 tipView.setText("$ "+String.format("%.2f",myCalculator.tipAmount()));
                 totalBill.setText("$ "+String.format("%.2f",myCalculator.totalAmount()));
+            }
+        });
+
+        openSecond.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainActivity.this, SecondActivity.class);
+                startActivity(i);
             }
         });
     }
